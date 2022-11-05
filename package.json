@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "node": "^19.0.1",
+    "note": "^1.2.1",
+    "typescript": "^4.8.4"
+  },
+  "name": "devopolis",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
