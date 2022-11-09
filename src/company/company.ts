@@ -1,9 +1,10 @@
-import mongoose from "mongoose";
+import mongoose, { now } from "mongoose";
 
 interface ICompany {
-  name: String;
-  tloc: Number;
-  locPerDay: Number;
+  name: string;
+  tloc: number;
+  locPerDay: number;
+  lastUpdatedLoc: Date;
 }
 
 interface companyModelInterface extends mongoose.Model<CompanyDoc> {
@@ -11,9 +12,11 @@ interface companyModelInterface extends mongoose.Model<CompanyDoc> {
 }
 
 interface CompanyDoc extends mongoose.Document {
-  name: String;
-  tloc: Number;
-  locPerDay: Number;
+
+  name: string;
+  tloc: number;
+  locPerDay: number;
+  lastUpdatedLoc: Date;
 }
 
 const companySchema = new mongoose.Schema({
@@ -29,6 +32,10 @@ const companySchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  lastUpdatedLoc: {
+    type: Date,
+    required: true,
+  },
 });
 
 companySchema.statics.build = (attr: ICompany) => {
@@ -40,10 +47,4 @@ const Company = mongoose.model<CompanyDoc, companyModelInterface>(
   companySchema
 );
 
-Company.build({
-  name: "some title",
-  tloc: 0,
-  locPerDay: 100,
-});
-
-export { Company };
+export { Company, CompanyDoc};
